@@ -34,13 +34,14 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 {
   char dirname[MAXPATHLEN],filename[MAXPATHLEN];
   int dim3,nr,ne,dirlen;
-  int startpos,endpos;
+  int startpos;
   double scalefactor;
   int i,j;
-  int image,slice,echo,coil;
+  int image,slice,echo;
   char function[20];
 
 #ifdef DEBUG
+  int coil;
   struct timeval tp;
   double t1,t2;
   int rtn;
@@ -57,8 +58,9 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
   }
 
   /* Number of slices and receivers */
-  dim3=d->endpos-d->startpos; nr=d->nr;
-  startpos=d->startpos; endpos=d->endpos;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
+  startpos=d->startpos;
 
   /* Create appropriate dirname with '.tif' extension */
   switch(d->datamode) {
@@ -218,12 +220,16 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
           if (!d->noise.data) getnoise2D(d,STD);
 
           /* Scale according to the smallest noise of all the receivers */
+#ifdef DEBUG
           coil=0;
+#endif
           scalefactor=d->noise.M[0];
           for (i=1;i<nr;i++) {
             if (d->noise.M[i] < scalefactor) {
               scalefactor=d->noise.M[i];
+#ifdef DEBUG
               coil=i;
+#endif
             }
           }
 

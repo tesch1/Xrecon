@@ -29,7 +29,7 @@
 
 void getvol1D(struct data *d,int volindex,int DCCflag)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j;
   int datatype;
   char function[20];
@@ -54,7 +54,9 @@ void getvol1D(struct data *d,int volindex,int DCCflag)
   if (d->zerofill) setdatapars(d);
 
   /* Set data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Allocate memory according to nr for all apptypes */
   if ((d->data = (fftw_complex ***)fftw_malloc(nr*sizeof(fftw_complex **))) == NULL) nomem();
@@ -96,7 +98,7 @@ void getvol1D(struct data *d,int volindex,int DCCflag)
 int read1Df(struct data *d,int volindex,int DCCflag)
 {
   float *fdata;        /* Pointer for 32-bit floating point data */
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k;
 
 #ifdef DEBUG
@@ -109,7 +111,9 @@ int read1Df(struct data *d,int volindex,int DCCflag)
 #endif    
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Allocate memory */
   if ((fdata = (float *)malloc(d->fh.np*d->fh.ebytes)) == NULL) nomem();
@@ -158,7 +162,7 @@ int read1Df(struct data *d,int volindex,int DCCflag)
 int read1Dl(struct data *d,int volindex,int DCCflag)
 {
   long int *ldata;     /* Pointer for 32-bit integer data */
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k;
 
 #ifdef DEBUG
@@ -171,7 +175,9 @@ int read1Dl(struct data *d,int volindex,int DCCflag)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Allocate memory */
   if ((ldata = (long *)malloc(d->fh.np*d->fh.ebytes)) == NULL) nomem();
@@ -220,7 +226,7 @@ int read1Dl(struct data *d,int volindex,int DCCflag)
 int read1Ds(struct data *d,int volindex,int DCCflag)
 {
   short int *sdata;    /* Pointer for 16-bit integer data */
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k;
 
 #ifdef DEBUG
@@ -233,7 +239,9 @@ int read1Ds(struct data *d,int volindex,int DCCflag)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Allocate memory */
   if ((sdata = (short *)malloc(d->fh.np*d->fh.ebytes)) == NULL) nomem();
@@ -281,7 +289,7 @@ int read1Ds(struct data *d,int volindex,int DCCflag)
 
 int set1Doffset(struct data *d,int volindex,int receiver,int trace)
 {
-  int dim1,dim2,dim3,nr;
+  int nr;
   long offset=0;
   int blockindex;
 
@@ -291,7 +299,7 @@ int set1Doffset(struct data *d,int volindex,int receiver,int trace)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  nr=d->nr;
 
   blockindex=volindex*nr+receiver;
 

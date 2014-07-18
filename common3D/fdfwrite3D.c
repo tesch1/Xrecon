@@ -810,7 +810,7 @@ void gen3Dfdfhdr(struct data *d,int image,int slab,int echo,int receiver,int typ
   double sinpsi,sinphi,sintheta;
   double or0,or1,or2,or3,or4,or5,or6,or7,or8;
   double value;
-  int dim1,dim2,dim3,ns,nr;
+  int dim1,dim2,dim3,ns;
   int ne;
   int i,j,add;
   int align=0,hdrlen,pad_cnt;
@@ -831,7 +831,9 @@ void gen3Dfdfhdr(struct data *d,int image,int slab,int echo,int receiver,int typ
   if ((d->fdfhdr = (char *)malloc(FDFHDRLEN*sizeof(char))) == NULL) nomem();
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->nv2; nr=d->nr;
+  dim1=d->np/2;
+  dim2=d->nv;
+  dim3=d->nv2;
 
   /* Number of echoes */
   ne=(int)*val("ne",&d->p);

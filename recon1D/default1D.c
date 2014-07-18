@@ -35,7 +35,7 @@ void default1D(struct data *d)
   struct file fref;
   struct data ref;
   struct datablockhead *dbh;
-  int dim1,dim2,dim3,nr;
+  int /*dim1,dim2,*/dim3,nr;
   int i,j;
   int wref=FALSE;
 
@@ -53,7 +53,10 @@ void default1D(struct data *d)
   wdfh(d,PHAS_FILE);
 
   /* Set data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  //dim1=d->np/2;
+  //dim2=1;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Set nuber of "volumes" */
   d->nvols=d->fh.nblocks/nr;
@@ -120,12 +123,15 @@ void default1D(struct data *d)
 
 void refcorr1D(struct data *d,struct data *ref)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,nr;
   int i,j;
   double re,im,M,phase;
 
   /* Set data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  //dim2=1;
+  //dim3=d->fh.ntraces;
+  nr=d->nr;
 
   for (i=0;i<nr;i++) { /* loop over receivers */
     for (j=0;j<dim1;j++) { /* loop over data points */
@@ -148,12 +154,13 @@ void refcorr1D(struct data *d,struct data *ref)
 
 void combine1D(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,nr;
   int i,j,npts;
   double re,im,M,phase,*recphase;
 
   /* Set data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  nr=d->nr;
 
   /* Return if there is nothing to do */
   if (nr<2) return;

@@ -30,7 +30,6 @@
 void addscaledEPIref(struct data *d,struct data *ref1,struct data *ref2)
 {
   int dim1,dim2,dim3,nr;
-  int nseg;
   int i,j,k,l,ix;
   double re,re2,im,im2,M;
   double level,M2,avM2;
@@ -53,7 +52,7 @@ void addscaledEPIref(struct data *d,struct data *ref1,struct data *ref2)
   fflush(stdout);
 #endif
 
-  nseg=(int)*val("nseg",&d->p);
+  //nseg=(int)*val("nseg",&d->p);
 
   /* Initial data dimensions */
   dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
@@ -475,8 +474,6 @@ void revreadEPI(struct data *d)
 
 void prepEPIref(struct data *ref1,struct data *ref2)
 {
-  int dim1,dim2,dim3,nr;
-
 #ifdef DEBUG
   char function[20];
   strcpy(function,"prepEPIref"); /* Set function name */
@@ -484,16 +481,10 @@ void prepEPIref(struct data *ref1,struct data *ref2)
 
   if (ref1->datamode == NONE) return;
 
-  /* Initial data dimensions */
-  dim1=ref1->np/2; dim2=ref1->nv; dim3=ref1->endpos-ref1->startpos; nr=ref1->nr;
-
   ftnpEPI(ref1);                /* FT along readout dimension */
   phaseEPI(ref1,ref2);          /* Phase correct with the reference */
   navcorrEPI(ref1);             /* Phase correct with the navigator */
   stripEPInav(ref1);            /* Strip the navigators */
-
-  /* Initial data dimensions */
-  dim1=ref1->np/2; dim2=ref1->nv; dim3=ref1->endpos-ref1->startpos; nr=ref1->nr;
 
   ftnvEPI(ref1);                /* FT along phase encode dimension */
 
@@ -653,7 +644,10 @@ void phaserampEPI(struct data *d,int mode)
 
 void navcorrEPI(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
+#ifdef DEBUG
+  int dim2;
+#endif
   int i,j,k,l,n,ix,ix2;
   int nnav,etl,nseg,shotnv;
   double re,im,M,phase,*navphase;
@@ -683,7 +677,11 @@ void navcorrEPI(struct data *d)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+#ifdef DEBUG
+  dim2=d->nv;
+#endif
+  dim3=d->endpos-d->startpos; nr=d->nr;
 
   /* Correct each shot according to last navigator of the shot */
   if ((navphase = (double *)malloc(dim1*sizeof(double))) == NULL) nomem();
@@ -726,7 +724,7 @@ void stripEPInav(struct data *d)
 {
   int i,j,k,l,n;
   int ix1,ix2;
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int ndim2,shotnv,nnav,etl,nseg,nphase,kzero,segzero;
   fftw_complex *data;
 
@@ -743,7 +741,9 @@ void stripEPInav(struct data *d)
 #endif
 
   /* Initial data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Figure which segment kzero is in */
   nphase=(int)*val("nphase",&d->p);
@@ -807,7 +807,7 @@ void stripEPInav(struct data *d)
 
 void weightnavs(struct data *d,double gf)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int shotnv,nnav,etl,nseg;
   int i,j,k,l,n,ix;
   double f;
@@ -838,7 +838,9 @@ void weightnavs(struct data *d,double gf)
   shotnv=nnav+etl;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Calculate weighting */
   if ((weight = (double *)malloc(dim1*sizeof(double))) == NULL) nomem();
@@ -886,7 +888,7 @@ void weightnavs(struct data *d,double gf)
 void segscale(struct data *d,struct segscale *scale)
 {
   int nseg,nnav,etl,nv;
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k,l,n,ix;
 
 #ifdef DEBUG
@@ -913,7 +915,9 @@ void segscale(struct data *d,struct segscale *scale)
   nv=nnav+etl;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Scale the data */
   for (i=0;i<nr;i++) {
@@ -951,7 +955,7 @@ void segscale(struct data *d,struct segscale *scale)
 void setsegscale(struct data *d,struct segscale *scale)
 {
   int cseg,nseg,scaleseg,nnav,etl,nv;
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k,l,n,ix;
   double re,im,max;
 
@@ -984,7 +988,9 @@ void setsegscale(struct data *d,struct segscale *scale)
   nv=nnav+etl;                              /* # echoes per shot */
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   if (d->datamode!=IMAGE) ftnpEPI(d); /* FT data if required */
 
@@ -1042,7 +1048,7 @@ void setsegscale(struct data *d,struct segscale *scale)
 
 void analyseEPInav(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int shotnv,nnav,etl,nseg;
   int i,j,k,l,n,ix,nval;
   double re,im,M2,noisefrac,*noiselvl,*navphase,*navmag;
@@ -1070,7 +1076,9 @@ void analyseEPInav(struct data *d)
   shotnv=nnav+etl;
 
   /* Initial data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Estimate noise so we can scale magnitude to it */
   noisefrac=0.05; nval=0;
@@ -1168,7 +1176,7 @@ void setblockEPI(struct data *d)
 {
   int i,j,k,l,m,n;
   int ix1,ix2;
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int ndim1,ndim2,nnav,etl,nv,nseg,gradnp,rampnp,platnp,oversample,skipnp=0,offset,echo;
   int prescan=FALSE,grid=FALSE;
   int ns,slice,slix,altread,GE,cseg=FALSE,rseg;
@@ -1188,7 +1196,9 @@ void setblockEPI(struct data *d)
 #endif
 
   /* Initial data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Check for prescan, ramp sampling, linear sampling and gridding */
   if (spar(d,"recon","prescanEPI")) prescan=TRUE;
@@ -1452,7 +1462,7 @@ int outvolEPI(struct data *d)
 
 void setnvolsEPI(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int nr;
 #ifdef DEBUG
   char function[20];
   strcpy(function,"setnvolsEPI"); /* Set function name */
@@ -1460,7 +1470,7 @@ void setnvolsEPI(struct data *d)
   fflush(stdout);
 #endif
   /* Set data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->ns; nr=d->nr;
+  nr=d->nr;
 
   /* Set nuber of "volumes" */
   d->nvols=d->fh.nblocks/nr;
@@ -1492,7 +1502,7 @@ void setblockSGE(struct data *d)
 {
   int i,j,k,l,n;
   int ix1,ix2,slice,slix,peix;
-  int dim1,dim2,dim3,nr;
+  int dim3,nr;
   int ndim1,ndim2,nnav,etl,ntraces,platnp,rampnp,oversample,nseg,ns,image;
   fftw_complex **data;
 
@@ -1509,7 +1519,8 @@ void setblockSGE(struct data *d)
 #endif
 
   /* Initial data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* New data dimensions */
   platnp=(int)(*val("platnp",&d->p));          /* # points on the readout plateau */

@@ -31,7 +31,7 @@ int wrawbin2D(struct data *d,int type,int precision,int volindex)
 {
   char dirname[MAXPATHLEN],filename[MAXPATHLEN];
   int dim3,nr,ne,dirlen;
-  int startpos,endpos;
+  int startpos;
   int i,j;
   int image,slice,echo;
   char function[20];
@@ -61,8 +61,9 @@ int wrawbin2D(struct data *d,int type,int precision,int volindex)
   }
 
   /* Number of slices and receivers */
-  dim3=d->endpos-d->startpos; nr=d->nr;
-  startpos=d->startpos; endpos=d->endpos;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
+  startpos=d->startpos;
 
   /* Create appropriate dirname with '.raw' extension */
   switch(d->datamode) {

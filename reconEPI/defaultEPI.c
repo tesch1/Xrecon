@@ -29,7 +29,6 @@
 
 void defaultEPI(struct data *d)
 {
-  int dim3,nr;
   int DISCARD=-1;
   int refEPI=FALSE,refSGE=FALSE;
   int getscaleref=FALSE;
@@ -88,9 +87,6 @@ void defaultEPI(struct data *d)
   d->nv=(int)*val("nseg",&d->p);      /* Use d->nv for the number of shots */
 
   setnvolsEPI(d);                     /* Set the number of data volumes */
-
-  /* Set data dimensions */
-  dim3=d->endpos-d->startpos; nr=d->nr;
 
   /* Allow for scaled FOV in ASL test setup expt */
   lro=*val("lro",&d->p)**val("aslfov",&d->p);

@@ -29,7 +29,7 @@
 
 void profile2D(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int dim3,nr;
   int i,j;
   struct datablockhead *dbh;
 
@@ -47,7 +47,8 @@ void profile2D(struct data *d)
   wdfh(d,PHAS_FILE);
 
   /* Set data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim3=d->fh.ntraces;
+  nr=d->nr;
 
   /* Set nuber of "volumes" */
   d->nvols=d->fh.nblocks/nr;

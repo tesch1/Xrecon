@@ -824,7 +824,7 @@ void gen2Dfdfhdr(struct data *d,int image,int slice,int echo,int receiver,int ty
   double or0,or1,or2,or3,or4,or5,or6,or7,or8;
   double arraydim;
   double value;
-  int dim1,dim2,ns,nr;
+  int dim1,dim2,ns;
   int ne;
   int i,j,add;
   int align=0,hdrlen,pad_cnt;
@@ -845,7 +845,7 @@ void gen2Dfdfhdr(struct data *d,int image,int slice,int echo,int receiver,int ty
   if ((d->fdfhdr = (char *)malloc(FDFHDRLEN*sizeof(char))) == NULL) nomem();
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; ns=d->ns; nr=d->nr;
+  dim1=d->np/2; dim2=d->nv; ns=d->ns;
 
   /* Number of echoes */
   ne=(int)*val("ne",&d->p);

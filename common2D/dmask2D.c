@@ -215,7 +215,7 @@ void get2Dmask(struct data *d,int mode)
 
 void fill2Dmask(struct data *d,int mode)
 {
-  int dim1,dim2,ns,nr;
+  int dim1,dim2,ns;
   int start,end;
   int startpos,endpos,blockslices;
   int i,j,k,l,m;
@@ -239,7 +239,9 @@ void fill2Dmask(struct data *d,int mode)
   if (!d->maskdata) return;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; ns=d->ns; nr=d->nr;
+  dim1=d->np/2;
+  dim2=d->nv;
+  ns=d->ns;
 
   switch(mode) {
     case MK: /* Mask parameters */

@@ -29,7 +29,7 @@
 
 void prescanEPI(struct data *d)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim2;
   double oversample;
   int nread;
   int rampsamp=FALSE,linearsamp=FALSE;
@@ -49,9 +49,6 @@ void prescanEPI(struct data *d)
   d->nv=(int)*val("nseg",&d->p);      /* Use d->nv for the number of shots */
 
   setnvolsEPI(d);                     /* Set the number of data volumes */
-
-  /* Set data dimensions */
-  dim3=d->endpos-d->startpos; nr=d->nr;
 
   /* Check for oversampling */
   oversample=*val("oversample",&d->p);

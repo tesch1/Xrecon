@@ -88,13 +88,13 @@ void getblock3D(struct data *d,int volindex,int DCCflag)
 
 void shiftdatadim3(struct data *d,int dataorder,int mode)
 {
-  int dim1,dim2,dim3;
+  int dim3;
   int dim3shft=0;
   char function[20];
   strcpy(function,"shiftdatadim3"); /* Set function name */
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->nv2;
+  dim3=d->nv2;
 
   /* Set shift points */
   switch(mode) {
@@ -252,7 +252,9 @@ void weightdatadim3(struct data *d,int mode)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim2=d->nv;
+  dim3=d->endpos-d->startpos; nr=d->nr;
 
   /* Calculate weighting */
   if ((weight = (double *)malloc(dim3*sizeof(double))) == NULL) nomem();

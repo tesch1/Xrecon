@@ -204,7 +204,7 @@ void gennifti(struct data *d,int mode,char *outdir,int type,int precision,int fo
   int volume,niftivols,nifticycle,niftifile;
   int newfile=FALSE;
   int i;
-  int image,echo;
+  int image;
   char function[20];
   strcpy(function,"gennifti"); /* Set function name */
 
@@ -252,7 +252,7 @@ void gennifti(struct data *d,int mode,char *outdir,int type,int precision,int fo
 
   /* Allow for compressed multi-echo loop */
   image=(volindex-VOLUMEOFFSET)/ne;
-  echo=(volindex-VOLUMEOFFSET)%ne;
+  //echo=(volindex-VOLUMEOFFSET)%ne;
 
   /* Figure the file we need to create / append to */
   niftivols=(int)*val("niftivols",&d->p);     /* The number of volumes per NIFTI file */

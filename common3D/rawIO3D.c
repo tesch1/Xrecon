@@ -699,7 +699,6 @@ void get3Draw(struct data *d,int mode,char *indir,int dataorder)
   char basename[MAXPATHLEN],dirname[MAXPATHLEN],filename[MAXPATHLEN];
   int dim1=0,dim2=0,dim3=0,nr=0;
   int volindex;
-  int startpos,endpos;
   int ne,ns;
   int slab,image,echo;
   int i,j;
@@ -713,9 +712,6 @@ void get3Draw(struct data *d,int mode,char *indir,int dataorder)
      or using a combination of data from all receivers (wcomb3Dfdf). */
 
   volindex=d->vol;
-
-  /* Set start and end position of block */
-  startpos=d->startpos; endpos=d->endpos;
 
   /* If a previous block has been zero filled matrix size will be incorrect */
   /* Refresh from procpar values */
@@ -802,7 +798,7 @@ void r3Draw(char *filename,struct data *d,int receiver)
 {
   FILE *fp;
   double *doubledata;  /* Pointer for 64-bit double data */
-  int dim1,dim2,dim3,nr,np,nv;
+  int dim1,dim2,dim3,np,nv;
   int startpos;
   long offset;
   int j,k;
@@ -819,7 +815,7 @@ void r3Draw(char *filename,struct data *d,int receiver)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->endpos-d->startpos; dim3=d->nv2; nr=d->nr;
+  dim1=d->np/2; dim2=d->endpos-d->startpos; dim3=d->nv2;
   np=d->np; nv=d->nv;
 
   /* Start position */
@@ -867,7 +863,7 @@ void r3DrawD3(char *filename,struct data *d,int receiver)
 {
   FILE *fp;
   double *doubledata;  /* Pointer for 64-bit double data */
-  int dim1,dim2,dim3,nr,nv2,twodim3;
+  int dim1,dim2,dim3,nv2,twodim3;
   int startpos;
   long offset=0;
   int j,k;
@@ -884,7 +880,7 @@ void r3DrawD3(char *filename,struct data *d,int receiver)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos;
   nv2=d->nv2; twodim3=dim3*2;
 
   /* Start position */

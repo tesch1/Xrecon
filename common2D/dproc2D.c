@@ -1200,7 +1200,7 @@ void getmax2D(struct data *d)
 
 void zoomdata2D(struct data *d,int startdim1, int widthdim1, int startdim2, int widthdim2)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int i,j,k,l;
   int ix1,ix2;
   fftw_complex *data;
@@ -1218,7 +1218,9 @@ void zoomdata2D(struct data *d,int startdim1, int widthdim1, int startdim2, int 
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Make data the new size and initialise to zero */
   if ((data = (fftw_complex *)fftw_malloc(widthdim2*widthdim1*sizeof(fftw_complex))) == NULL) nomem();

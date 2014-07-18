@@ -314,7 +314,7 @@ int read2Dl(struct data *d,int volindex,int DCCflag)
 int read2Ds(struct data *d,int volindex,int DCCflag)
 {
   short int *sdata;    /* Pointer for 16-bit integer data */
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int startslice,slice,scale;
   int i,j,k,l;
 
@@ -328,7 +328,9 @@ int read2Ds(struct data *d,int volindex,int DCCflag)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Start slice */
   startslice=d->startpos;
@@ -381,7 +383,7 @@ int read2Ds(struct data *d,int volindex,int DCCflag)
 
 int set2Doffset(struct data *d,int volindex,int receiver,int slice,int phase)
 {
-  int dim1,dim2,ns,nr;
+  int dim2,ns,nr;
   int index;
   int arraydim,ne,etl,psscycle,seqmode;
   long offset=0;
@@ -394,7 +396,9 @@ int set2Doffset(struct data *d,int volindex,int receiver,int slice,int phase)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; ns=d->ns; nr=d->nr;
+  dim2=d->nv;
+  ns=d->ns;
+  nr=d->nr;
 
   /* Number of echoes */
   ne=(int)*val("ne",&d->p);

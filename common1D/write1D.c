@@ -34,12 +34,12 @@ void w1Dtrace(struct data *d,int receiver,int trace,int fileid)
 {
   FILE *fp=0;
   float *floatdata;
-  int dim1,dim2,dim3,nr;
+  int dim1;
   double re,im,M;
   int k;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
 
   switch(fileid) {
     case DATA_FILE:
@@ -75,12 +75,13 @@ void w1Dblock(struct data *d,int receiver,int fileid)
 {
   FILE *fp=0;
   float *floatdata;
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3;
   double re,im,M;
   int j,k;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->fh.ntraces;
 
   switch(fileid) {
     case DATA_FILE:

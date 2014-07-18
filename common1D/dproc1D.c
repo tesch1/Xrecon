@@ -265,11 +265,12 @@ int shifttrace1D(struct data *d,int trace,int mode)
 int shift1Dtrace(struct data *d,int trace,int npshft)
 {
   fftw_complex *data;
-  int dim1,dim2,dim3,nr;
+  int dim1,nr;
   int i,j;
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  nr=d->nr;
 
   /* Allocate memory for slice data */
   if ((data = (fftw_complex *)fftw_malloc(dim1*sizeof(fftw_complex))) == NULL) nomem();
@@ -674,7 +675,7 @@ void phasedata1D(struct data *d,int mode,int dataorder)
 
 void getmaxtrace1D(struct data *d,int trace)
 {
-  int dim1,dim2,dim3,nr;
+  int dim1,nr;
   double re,im,M;
   int i,j;
 
@@ -693,7 +694,8 @@ void getmaxtrace1D(struct data *d,int trace)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=1; dim3=d->fh.ntraces; nr=d->nr;
+  dim1=d->np/2;
+  nr=d->nr;
 
   /* Set some defaults */
   zeromax(d);

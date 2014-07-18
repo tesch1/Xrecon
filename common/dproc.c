@@ -559,7 +559,7 @@ int readlvol(struct data *d,int volindex,int DCCflag)
 int readsvol(struct data *d,int volindex,int DCCflag)
 {
   short int *sdata;    /* Pointer for 16-bit integer data */
-  int dim1,dim2,dim3,nr;
+  int dim1,dim3,nr;
   int startpos,dim3index,scale;
   int i,j,k,l;
 
@@ -573,7 +573,9 @@ int readsvol(struct data *d,int volindex,int DCCflag)
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; dim3=d->endpos-d->startpos; nr=d->nr;
+  dim1=d->np/2;
+  dim3=d->endpos-d->startpos;
+  nr=d->nr;
 
   /* Start slice */
   startpos=d->startpos;
@@ -626,7 +628,7 @@ int readsvol(struct data *d,int volindex,int DCCflag)
 
 int setoffset(struct data *d,int volindex,int receiver,int dim3index,int dim2index)
 {
-  int dim1,dim2,ns,nv2,nr;
+  int dim2,ns,nv2,nr;
   int index,phase,slice=0,phase2=0;
   int arraydim,ne,etl,psscycle;
   long offset=0;
@@ -638,7 +640,10 @@ int setoffset(struct data *d,int volindex,int receiver,int dim3index,int dim2ind
 #endif
 
   /* Data dimensions */
-  dim1=d->np/2; dim2=d->nv; ns=d->ns; nv2=d->nv2; nr=d->nr;
+  dim2=d->nv;
+  ns=d->ns;
+  nv2=d->nv2;
+  nr=d->nr;
 
   /* Number of echoes */
   ne=(int)*val("ne",&d->p);
