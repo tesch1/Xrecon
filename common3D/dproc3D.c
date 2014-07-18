@@ -140,11 +140,10 @@ void shiftdim3data(struct data *d,int dim3shft)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"shiftdim3data"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -176,7 +175,7 @@ void shiftdim3data(struct data *d,int dim3shft)
   fftw_free(data);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   fflush(stdout);
@@ -195,7 +194,6 @@ void weightdatadim3(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"weightdatadim3"); /* Set function name */
 #endif
@@ -246,7 +244,7 @@ void weightdatadim3(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -314,7 +312,7 @@ void weightdatadim3(struct data *d,int mode)
   free(weight);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   if (lb2) fprintf(stdout,"  lb2 weighting = %f\n",lb2);
   if (gf2) fprintf(stdout,"  gf2 weighting = %f\n",gf2);
@@ -334,7 +332,6 @@ void zerofilldim3(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"zerofilldim3"); /* Set function name */
 #endif
@@ -354,7 +351,7 @@ void zerofilldim3(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -433,7 +430,7 @@ void zerofilldim3(struct data *d,int mode)
   d->zerofill=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Zero filling dim3 to %d: took %f secs\n",ndim3,t2-t1);
   fflush(stdout);
@@ -451,12 +448,11 @@ void fftdim3(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"fftdim3"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Starting 1D FT in dim3 ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -493,7 +489,7 @@ void fftdim3(struct data *d)
   d->datamode=IMAGE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  1D FT of %d x %d x %d data: took %f secs\n",dim1,dim2,dim3,t2-t1);
@@ -512,7 +508,6 @@ void phaserampdim3(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phaserampdim3"); /* Set function name */
 #endif
@@ -529,7 +524,7 @@ void phaserampdim3(struct data *d,int mode)
       if (offset == 0.0) return;
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -566,7 +561,7 @@ void phaserampdim3(struct data *d,int mode)
         }
       }
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Phase encode phase ramp (%d traces): took %f secs\n",dim1,t2-t1);
   fflush(stdout);
@@ -587,7 +582,6 @@ void phasedatadim3(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phasedatadim3"); /* Set function name */
 #endif
@@ -608,7 +602,7 @@ void phasedatadim3(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -644,7 +638,7 @@ void phasedatadim3(struct data *d,int mode)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs:\n",t2-t1);
   fflush(stdout);

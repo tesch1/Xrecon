@@ -37,7 +37,6 @@ void addscaledEPIref(struct data *d,struct data *ref1,struct data *ref2)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"addscaledEPIref"); /* Set function name */
 #endif
@@ -47,7 +46,7 @@ void addscaledEPIref(struct data *d,struct data *ref1,struct data *ref2)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -85,7 +84,7 @@ void addscaledEPIref(struct data *d,struct data *ref1,struct data *ref2)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Combining with reference data: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -101,7 +100,6 @@ void addEPIref(struct data *d,struct data *ref)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"addEPIref"); /* Set function name */
 #endif
@@ -110,7 +108,7 @@ void addEPIref(struct data *d,struct data *ref)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -133,7 +131,7 @@ void addEPIref(struct data *d,struct data *ref)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Combining with reference data: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -152,12 +150,11 @@ void ftnvEPI(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"ftnvEPI"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Starting 1D FT in phase ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -223,7 +220,7 @@ void ftnvEPI(struct data *d)
   d->datamode=IMAGE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  1D FT of %d x %d data: took %f secs\n",dim1,dim2,t2-t1);
@@ -242,7 +239,6 @@ void nvfillEPI(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"nvfillEPI"); /* Set function name */
 #endif
@@ -256,7 +252,7 @@ void nvfillEPI(struct data *d)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -301,7 +297,7 @@ void nvfillEPI(struct data *d)
   d->nv=nphase;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Phase zerofilled for kzero: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -321,12 +317,11 @@ void ftnpEPI(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"ftnpEPI"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Starting 1D FT in read ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -402,7 +397,7 @@ void ftnpEPI(struct data *d)
   if (oversample>1) zoomEPI(d);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  1D FT of %d x %d data: took %f secs\n",dim1,dim2,t2-t1);
@@ -513,7 +508,6 @@ void phaseEPI(struct data *d,struct data *ref)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phaseEPI"); /* Set function name */
 #endif
@@ -523,7 +517,7 @@ void phaseEPI(struct data *d,struct data *ref)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -551,7 +545,7 @@ void phaseEPI(struct data *d,struct data *ref)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Readout phase correction (%d traces): took %f secs\n",dim2,t2-t1);
   fflush(stdout);
@@ -569,7 +563,6 @@ void phaserampEPI(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phaserampEPI"); /* Set function name */
 #endif
@@ -584,7 +577,7 @@ void phaserampEPI(struct data *d,int mode)
       if (offset == 0.0) return;
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -629,7 +622,7 @@ void phaserampEPI(struct data *d,int mode)
         }
       }
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Readout phase ramp (%d traces): took %f secs\n",dim2,t2-t1);
   fflush(stdout);
@@ -655,7 +648,6 @@ void navcorrEPI(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"navcorrEPI"); /* Set function name */
 #endif
@@ -671,7 +663,7 @@ void navcorrEPI(struct data *d)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -712,7 +704,7 @@ void navcorrEPI(struct data *d)
   free(navphase);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Navigator phase correction (%d traces): took %f secs\n",dim2,t2-t1);
   fflush(stdout);
@@ -731,11 +723,10 @@ void stripEPInav(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"stripEPInav"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -797,7 +788,7 @@ void stripEPInav(struct data *d)
   d->nv=ndim2;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Stripping to give %d x %d data: took %f secs\n",dim1,ndim2,t2-t1);
   fflush(stdout);
@@ -816,7 +807,6 @@ void weightnavs(struct data *d,double gf)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"weightnavs"); /* Set function name */
 #endif
@@ -826,7 +816,7 @@ void weightnavs(struct data *d,double gf)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -876,7 +866,7 @@ void weightnavs(struct data *d,double gf)
   free(weight);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  gf nav weighting = %f\n",gf);
   fprintf(stdout,"  Took %f secs\n",t2-t1);
@@ -894,7 +884,6 @@ void segscale(struct data *d,struct segscale *scale)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"segscale"); /* Set function name */
 #endif
@@ -904,7 +893,7 @@ void segscale(struct data *d,struct segscale *scale)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -935,7 +924,7 @@ void segscale(struct data *d,struct segscale *scale)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Scaling compressed segements: Took %f secs\n",t2-t1);
   /* Print scale values
@@ -962,7 +951,6 @@ void setsegscale(struct data *d,struct segscale *scale)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"setsegscale"); /* Set function name */
 #endif
@@ -978,7 +966,7 @@ void setsegscale(struct data *d,struct segscale *scale)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -1039,7 +1027,7 @@ void setsegscale(struct data *d,struct segscale *scale)
   scale->data=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Calculating scaling for compressed segements: Took %f secs\n",t2-t1);
   fflush(stdout);
@@ -1056,7 +1044,6 @@ void analyseEPInav(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"analyseEPInav"); /* Set function name */
 #endif
@@ -1066,7 +1053,7 @@ void analyseEPInav(struct data *d)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -1152,7 +1139,7 @@ void analyseEPInav(struct data *d)
   free(noiselvl);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   fflush(stdout);
@@ -1186,11 +1173,10 @@ void setblockEPI(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"setblockEPI"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -1423,7 +1409,7 @@ void setblockEPI(struct data *d)
   d->nv=ndim2;   /* set d->nv for the data */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Reordering to give %d x %d data: took %f secs\n",ndim1,ndim2,t2-t1);
   fflush(stdout);
@@ -1509,11 +1495,10 @@ void setblockSGE(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"setblockSGE"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -1619,7 +1604,7 @@ void setblockSGE(struct data *d)
   d->nv=ndim2;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Reordering to give %d x %d data: took %f secs\n",ndim1,ndim2,t2-t1);
   fflush(stdout);

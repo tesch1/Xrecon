@@ -50,11 +50,10 @@ int *sliceorder(struct data *d,int dim,char *par)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"sliceorder"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -95,7 +94,7 @@ int *sliceorder(struct data *d,int dim,char *par)
     }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Slice ordering took %f secs\n",t2-t1);
   if (!standardorder) {
@@ -124,11 +123,10 @@ int *phaseorder(struct data *d,int dim,char *par)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phaseorder"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -168,7 +166,7 @@ int *phaseorder(struct data *d,int dim,char *par)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Phase ordering took %f secs\n",t2-t1);
   if (!standardorder) {
@@ -875,11 +873,10 @@ void getmax(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"getmax"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -919,7 +916,7 @@ void getmax(struct data *d)
   d->max.data=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs:\n",t2-t1);
   fprintf(stdout,"  d->max.Mval = %f\n",d->max.Mval);
@@ -945,11 +942,10 @@ void getnoise(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"getnoise"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -1168,7 +1164,7 @@ void getnoise(struct data *d,int mode)
   d->noise.data=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Noise data averaged over %d points: took %f secs\n",d->noise.samples/nr,t2-t1);
   for (i=0;i<nr;i++) {

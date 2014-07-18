@@ -66,11 +66,10 @@ void copy2Ddata(struct data *d1,struct data *d2)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"copy2Ddata"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -108,7 +107,7 @@ void copy2Ddata(struct data *d1,struct data *d2)
   d2->startpos=d1->startpos; d2->endpos=d1->endpos;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Copying data: took  %f secs\n",t2-t1);
   fflush(stdout);

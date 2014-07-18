@@ -114,11 +114,10 @@ void settep(struct data *d, int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Attempting to calculate correction for tep ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -226,9 +225,9 @@ void settep(struct data *d, int mode)
       fclose(f_out);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
-  fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
+  fprintf(stdout,"\n%s: %s() %f-%f\n",SOURCEFILE,function,t1,t2);
   fprintf(stdout,"  Magnitude data suggests add %f us to value of tep\n",tepadjust);
   fprintf(stdout,"  Result written to file %s\n",tepfile);
   fflush(stdout);

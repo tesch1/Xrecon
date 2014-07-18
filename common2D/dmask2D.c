@@ -67,7 +67,6 @@ void get2Dmask(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"get2Dmask"); /* Set function name */
 #endif
@@ -77,7 +76,7 @@ void get2Dmask(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -145,7 +144,7 @@ void get2Dmask(struct data *d,int mode)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Blank mask generated: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -166,7 +165,7 @@ void get2Dmask(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -205,7 +204,7 @@ void get2Dmask(struct data *d,int mode)
   d->maskdata=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Masked with threshold = %f: took %f secs\n",threshold,t2-t1);
   fflush(stdout);
@@ -230,7 +229,6 @@ void fill2Dmask(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"fill2Dmask"); /* Set function name */
 #endif
@@ -306,7 +304,7 @@ void fill2Dmask(struct data *d,int mode)
   for (i=0;i<dfillloops;i++) {
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -472,7 +470,7 @@ void fill2Dmask(struct data *d,int mode)
     } /* end ns for loop */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Density Filter, pass %d: took %f secs\n",i+1,t2-t1);
   fflush(stdout);

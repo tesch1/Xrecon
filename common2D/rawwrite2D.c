@@ -39,7 +39,6 @@ int wrawbin2D(struct data *d,int type,int precision,int volindex)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   strcpy(function,"wrawbin2D"); /* Set function name */
@@ -47,7 +46,7 @@ int wrawbin2D(struct data *d,int type,int precision,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Writing raw binary data");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -136,7 +135,7 @@ int wrawbin2D(struct data *d,int type,int precision,int volindex)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout," in %s: took %f secs\n",dirname,t2-t1);
   fflush(stdout);

@@ -37,11 +37,10 @@ void fft1D(struct data *d,int dataorder)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"fft1D"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -92,7 +91,7 @@ void fft1D(struct data *d,int dataorder)
 /*  zeronoise(d); */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  ft (%d): %d trace(s), %d receiver(s): took %f secs\n",
     dim1,dim3,nr,t2-t1);
@@ -167,12 +166,11 @@ int shift1Ddata(struct data *d,int shft,int dataorder)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"shift1Ddata"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  shft = %d: ",shft);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -209,7 +207,7 @@ int shift1Ddata(struct data *d,int shft,int dataorder)
   fftw_free(data);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"took %f secs\n",t2-t1);
   fflush(stdout);
@@ -309,7 +307,6 @@ void weightdata1D(struct data *d,int mode,int dataorder)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"weightdata1D"); /* Set function name */
 #endif
@@ -333,7 +330,7 @@ void weightdata1D(struct data *d,int mode,int dataorder)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -399,7 +396,7 @@ f=exp(-k*at*M_PI*lb/dim1);
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   switch (dataorder) {
     case D1:
@@ -430,7 +427,6 @@ void zerofill1D(struct data *d,int mode,int dataorder)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"zerofill1D"); /* Set function name */
 #endif
@@ -452,7 +448,7 @@ void zerofill1D(struct data *d,int mode,int dataorder)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -521,7 +517,7 @@ void zerofill1D(struct data *d,int mode,int dataorder)
   d->zerofill=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Zero filling to give %d data: took %f secs\n",ndim1,t2-t1);
   fflush(stdout);
@@ -539,7 +535,6 @@ void phaseramp1D(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phaseramp1D"); /* Set function name */
 #endif
@@ -554,7 +549,7 @@ void phaseramp1D(struct data *d,int mode)
       if (offset == 0.0) return;
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -583,7 +578,7 @@ void phaseramp1D(struct data *d,int mode)
         }
       }
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Phase encode phase ramp (%d traces): took %f secs\n",dim3,t2-t1);
   fflush(stdout);
@@ -604,7 +599,6 @@ void phasedata1D(struct data *d,int mode,int dataorder)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"phasedata2D"); /* Set function name */
 #endif
@@ -628,7 +622,7 @@ void phasedata1D(struct data *d,int mode,int dataorder)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -665,7 +659,7 @@ void phasedata1D(struct data *d,int mode,int dataorder)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs:\n",t2-t1);
   fflush(stdout);
@@ -682,12 +676,11 @@ void getmaxtrace1D(struct data *d,int trace)
 #ifdef DEBUG
   struct timeval tp;
   double t1=0,t2=0;
-  int rtn;
   char function[20];
   strcpy(function,"getmaxtrace1D"); /* Set function name */
   if (trace == 0) {
     fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-    rtn=gettimeofday(&tp, NULL);
+    gettimeofday(&tp, NULL);
     t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
     fflush(stdout);
   }
@@ -725,7 +718,7 @@ void getmaxtrace1D(struct data *d,int trace)
 
 #ifdef DEBUG
   if (trace == 0) {
-    rtn=gettimeofday(&tp, NULL);
+    gettimeofday(&tp, NULL);
     t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
     fprintf(stdout,"  Took %f secs:\n",t2-t1);
     fprintf(stdout,"  d->max.Mval = %f\n",d->max.Mval);

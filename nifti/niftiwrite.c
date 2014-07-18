@@ -53,7 +53,6 @@ void writenifti(struct data *d,int type,int precision,int format,int volindex)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   /* Call wnifti with a negative volindex to flag a skipped reference volume */
@@ -83,7 +82,7 @@ void writenifti(struct data *d,int type,int precision,int format,int volindex)
     case NIFTI: fprintf(stdout,"  Writing NIFTI-1 data"); break;
     case ANALYZE: fprintf(stdout,"  Writing Analyze7.5 data"); break;
   }
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -160,7 +159,7 @@ void writenifti(struct data *d,int type,int precision,int format,int volindex)
   } /* end type switch */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   fflush(stdout);

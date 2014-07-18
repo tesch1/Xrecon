@@ -44,7 +44,6 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
   int coil;
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   strcpy(function,"wtifs2D"); /* Set function name */
@@ -121,7 +120,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling mask to %d ...\n",(int)TIFMAX);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -130,7 +129,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  No scaling of data ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
         break;
@@ -145,7 +144,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to maximum Magnitude value of %f ...\n",d->max.Mval);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           scalefactor=TIFMAX/d->max.Mval;
@@ -156,7 +155,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to range of -PI to +PI ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -165,7 +164,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling mask to %d ...\n",(int)TIFMAX);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -174,7 +173,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to maximum Magnitude value of %f ...\n",d->max.Mval);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           scalefactor=TIFMAX/d->max.Mval;
@@ -184,7 +183,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to maximum value of %f ...\n",d->max.Rval);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           scalefactor=TIFMAX/d->max.Rval;
@@ -201,7 +200,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to range of -PI to +PI ...\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -210,7 +209,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling mask to %d ...\n",(int)TIFMAX);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -236,7 +235,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling to magnitude of noise in receiver %d (%f) ...\n",coil,scalefactor);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           scalefactor=TIFMAX/(5.0*scalefactor);
@@ -251,7 +250,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling mask to %d ...\n",(int)TIFMAX);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
           break;
@@ -260,7 +259,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Scaling so that %d is the maximum value ...\n",scale);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
 #endif
         break;
@@ -290,7 +289,7 @@ int wtifs2D(struct data *d,int type,int scale,int volindex)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  ... and writing in %s: took %f secs\n",dirname,t2-t1);
 #endif

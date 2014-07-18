@@ -50,7 +50,6 @@ void dccorrect2D(struct data *d)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"dccorrect2D"); /* Set function name */
 #endif
@@ -60,7 +59,7 @@ void dccorrect2D(struct data *d)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -96,7 +95,7 @@ void dccorrect2D(struct data *d)
     }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  DC correction using noise region in data: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -117,11 +116,10 @@ void getnoise2D(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"getnoise2D"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -261,7 +259,7 @@ void getnoise2D(struct data *d,int mode)
   d->noise.data=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Noise data averaged over %d points: took %f secs\n",n,t2-t1);
   for (i=0;i<nr;i++) {
@@ -286,7 +284,6 @@ void get2Dnoisematrix(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"get2Dnoisematrix"); /* Set function name */
 #endif
@@ -299,7 +296,7 @@ void get2Dnoisematrix(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -422,7 +419,7 @@ void get2Dnoisematrix(struct data *d,int mode)
   d->noise.matrix=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   print2Dnoisematrix(d);
@@ -444,7 +441,6 @@ void equalizenoise2D(struct data *d,int mode)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"equalizenoise2D"); /* Set function name */
 #endif
@@ -475,7 +471,7 @@ void equalizenoise2D(struct data *d,int mode)
 
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -510,7 +506,7 @@ void equalizenoise2D(struct data *d,int mode)
   d->noise.equal=TRUE;
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Noise data equlaized: took %f secs\n",t2-t1);
   fflush(stdout);
@@ -526,11 +522,10 @@ void scale2Ddata(struct data *d,double factor)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
   char function[20];
   strcpy(function,"scale2Ddata"); /* Set function name */
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -551,7 +546,7 @@ void scale2Ddata(struct data *d,double factor)
   }
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Data scaled by %f: took %f secs\n",factor,t2-t1);
   fflush(stdout);

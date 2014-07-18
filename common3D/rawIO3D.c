@@ -35,7 +35,6 @@ void wrawbin3D(struct data *d,int dataorder,int type,int precision)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   strcpy(function,"wrawbin3D"); /* Set function name */
@@ -43,7 +42,7 @@ void wrawbin3D(struct data *d,int dataorder,int type,int precision)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Writing raw 3D data\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -105,7 +104,7 @@ void wrawbin3D(struct data *d,int dataorder,int type,int precision)
   } /* end type switch */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   fflush(stdout);
@@ -635,7 +634,6 @@ void rrawbin3D(struct data *d,int dataorder,int type,int precision)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   strcpy(function,"rrawbin3D"); /* Set function name */
@@ -643,7 +641,7 @@ void rrawbin3D(struct data *d,int dataorder,int type,int precision)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Reading raw 3D data\n");
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -671,7 +669,7 @@ void rrawbin3D(struct data *d,int dataorder,int type,int precision)
   else get3Draw(d,'s',indir,dataorder);
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"  Took %f secs\n",t2-t1);
   fflush(stdout);

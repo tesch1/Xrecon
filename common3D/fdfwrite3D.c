@@ -41,7 +41,6 @@ void w3Dfdfs(struct data *d,int type,int precision,int volindex)
 #ifdef DEBUG
   struct timeval tp;
   double t1,t2;
-  int rtn;
 #endif
 
   /* Call w3Dfdfs with a negative volindex to flag a skipped reference scan */
@@ -60,7 +59,7 @@ void w3Dfdfs(struct data *d,int type,int precision,int volindex)
 #ifdef DEBUG
   fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
   fprintf(stdout,"  Writing 3D fdf data (block %d of %d)",d->block+1,d->nblocks);
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t1=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fflush(stdout);
 #endif
@@ -156,7 +155,7 @@ void w3Dfdfs(struct data *d,int type,int precision,int volindex)
   } /* end type switch */
 
 #ifdef DEBUG
-  rtn=gettimeofday(&tp, NULL);
+  gettimeofday(&tp, NULL);
   t2=(double)tp.tv_sec+(1.e-6)*tp.tv_usec;
   fprintf(stdout,"\n  Took %f secs\n",t2-t1);
   fflush(stdout);
