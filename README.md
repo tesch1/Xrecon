@@ -40,88 +40,88 @@ Please consult the INSTALL file in this distribution for instructions.
 Files
 =====
 
-COPYING         The GPL
-INSTALL         Installation instructions
-README          This file
-Makefile        Xrecon makefile
-data.h          Stripped down Varian data file handler
-Xrecon.c        Main External Reconstruction
-Xrecon.h        Global includes and defines
+- COPYING         The GPL
+- INSTALL         Installation instructions
+- README          This file
+- Makefile        Xrecon makefile
+- data.h          Stripped down Varian data file handler
+- Xrecon.c        Main External Reconstruction
+- Xrecon.h        Global includes and defines
 
 recon1D
 -------
-recon1D.c       1D recon
-default1D.c     Default 1D recon
+- recon1D.c       1D recon
+- default1D.c     Default 1D recon
 
 recon2D
 -------
-recon2D.c       2D recon
-default2D.c     Default 2D recon
-profile2D.c     Profile of 2D experiment
+- recon2D.c       2D recon
+- default2D.c     Default 2D recon
+- profile2D.c     Profile of 2D experiment
 
 reconEPI
 --------
-reconEPI.c      EPI recon
-defaultEPI.c    Default EPI recon
-dprocEPI.c      EPI data processing
-prescanEPI.c    EPI prescan recon
+- reconEPI.c      EPI recon
+- defaultEPI.c    Default EPI recon
+- dprocEPI.c      EPI data processing
+- prescanEPI.c    EPI prescan recon
 
 recon3D
 -------
-recon3D.c       3D recon
-default3D.c     Default 3D recon
+- recon3D.c       3D recon
+- default3D.c     Default 3D recon
 
 common1D
 --------
-dproc1D.c       1D data processing
-dread1D.c       1D data read
-dutils1D.c      1D data utilities
-write1D.c       1D phasefile and datafaile writing
+- dproc1D.c       1D data processing
+- dread1D.c       1D data read
+- dutils1D.c      1D data utilities
+- write1D.c       1D phasefile and datafaile writing
 
 common2D
 --------
-dmask2D.c       2D data masking
-dproc2D.c       2D data processing
-dread2D.c       2D data read
-dutils2D.c      2D data utilities
-noise2D.c       2D routines using noise measurements
-fdfwrite2D.c    2D fdf writing
-rawwrite2D.c    2D raw binary writing
-tifwrite2D.c    2D TIFF writing
+- dmask2D.c       2D data masking
+- dproc2D.c       2D data processing
+- dread2D.c       2D data read
+- dutils2D.c      2D data utilities
+- noise2D.c       2D routines using noise measurements
+- fdfwrite2D.c    2D fdf writing
+- rawwrite2D.c    2D raw binary writing
+- tifwrite2D.c    2D TIFF writing
 
 common3D
 --------
-dproc3D.c       3D data processing
-fdfwrite3D.c    3D fdf writing
-rawIO3D.c       3D raw binary writing
+- dproc3D.c       3D data processing
+- fdfwrite3D.c    3D fdf writing
+- rawIO3D.c       3D raw binary writing
 
 common
 ------
-dhead.c         Data header routines
-dutils.c        Data utilities
-options.c       Input options
-pars.c          Parameter read routines
-utils.c         General utilities
+- dhead.c         Data header routines
+- dutils.c        Data utilities
+- options.c       Input options
+- pars.c          Parameter read routines
+- utils.c         General utilities
 
 nifti
 -----
-niftiwrite.c    NIFTI-1/Analyze7.5 writing
-nifti1.h        NIFTI-1 header
+- niftiwrite.c    NIFTI-1/Analyze7.5 writing
+- nifti1.h        NIFTI-1 header
 
 
 Contacts
 ========
 
-Paul Kinchesh,
+~~Paul Kinchesh,
 Agilent Technologies (formerly Varian Ltd), 10 Mead Road, Oxford Industrial Park, Oxford OX5 1QU, UK
-paul.kinchesh@agilent.com
+paul.kinchesh@agilent.com~~
 
 
 Bug Reports
 ===========
 
-Paul Kinchesh, paul.kinchesh@agilent.com
-
+~~Paul Kinchesh, paul.kinchesh@agilent.com~~
+Paul wrote XRecon, but AFAIK, he is no longer actively working on it.  Please add bug reports to this github project.
 
 Contributors
 ============
