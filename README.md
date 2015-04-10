@@ -1,4 +1,12 @@
 "README"
+
+(I have no affiliation with Agilent, I've just put this repository up to have
+a place to collect/distribute improvements to the open-source *Xrecon* distributed
+with VnmrJ.  I'm not actively working on this, but I'm happy to incorporate any
+improvements/ports/updates!!!  Just submit a pull request over github.)
+
+--- snip ---
+
 Xrecon - External Reconstruction
 ================================
 
