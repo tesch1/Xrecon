@@ -29,6 +29,20 @@ Usage
 - as a drop-in replacement for the existing
 - for stand-alone command-line image reconstruction
 
+`
+Usage:
+    Xrecon -h <...>
+        print this help message
+
+    Xrecon -v <paths to VnmrJ acquisition>...
+        called from VnmrJ on unsaved acquisition data, outputs
+        reconstruction to (TODO...?)
+
+    Xrecon <paths to saved data>...
+        command line invocation on saved acquisition data, outputs
+        reconstruction to (.../data.img?)
+`
+
 --- snip: original README follows: ---
 Xrecon - External Reconstruction
 ================================
