@@ -474,7 +474,7 @@ void weightdata2D(struct data *d,int mode)
   switch(mode) {
     case READ: /* Read only using standard parameters */
       /* Return if ftproc[1]=0 (as VnmrJ) */
-      if ((*val("ftproc",&d->p) == 0.0)) return;
+      if (*val("ftproc",&d->p) == 0.0) return;
       lb=*val("lb",&d->p); /* Lorentzian */
       gf=*val("gf",&d->p); /* Gaussian */
       sb=*val("sb",&d->p); /* Sinebell */
@@ -482,7 +482,7 @@ void weightdata2D(struct data *d,int mode)
       break;
     case PHASE: /* Phase only using standard parameters */
       /* Return if ftproc[1]=0 (as VnmrJ) */
-      if ((*val("ftproc",&d->p) == 0.0)) return;
+      if (*val("ftproc",&d->p) == 0.0) return;
       lb1=*val("lb1",&d->p); /* Lorentzian */
       gf1=*val("gf1",&d->p); /* Gaussian */
       sb1=*val("sb1",&d->p); /* Sinebell */
@@ -512,7 +512,7 @@ void weightdata2D(struct data *d,int mode)
       break;
     default: /* Standard parameters */
       /* Return if ftproc[1]=0 (as VnmrJ) */
-      if ((*val("ftproc",&d->p) == 0.0)) return;
+      if (*val("ftproc",&d->p) == 0.0) return;
       lb=*val("lb",&d->p);   /* Lorentzian */
       lb1=*val("lb1",&d->p); /* Lorentzian */
       gf=*val("gf",&d->p);   /* Gaussian */

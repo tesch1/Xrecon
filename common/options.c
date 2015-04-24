@@ -27,17 +27,35 @@
 
 #define SOURCEFILE "common/options.c"
 
+void usage()
+{
+  fprintf(stdout,
+          "Usage:\n"
+          "    Xrecon -h <...>\n"
+          "        print this help message\n"
+          "\n"
+          "    Xrecon -v <paths to VnmrJ acquisition>...\n"
+          "        called from VnmrJ on unsaved acquisition data, outputs\n"
+          "        reconstruction to (TODO...?)\n"
+          "\n"
+          "    Xrecon <paths to saved data>...\n"
+          "        command line invocation on saved acquisition data, outputs\n"
+          "        reconstruction to (.../data.img?)\n"
+          "\n");
+  exit(-1);
+}
+
 void getoptions(int argc,char *argv[])
 {
   int vnmrj=FALSE;
-  int ival=0;
-  double val=0;
-  char str[MAXPATHLEN];
+  //int ival=0;
+  //double val=0;
+  //char str[MAXPATHLEN];
   int i;
   char function[20];
   strcpy(function,"getoptions"); /* Set function name */
 
-  *str=0;
+  //*str=0;
 
   /* Read arguments of form -x aaa -y bbb and of form -xyz */
   while ((--argc > 0) && ((*++argv)[0] == '-')) {
@@ -50,6 +68,10 @@ void getoptions(int argc,char *argv[])
         case 'v': /* Set vnmrj flag */
           vnmrj=TRUE; 
           break;
+        case 'h':
+          usage();
+          break;
+#if 0 // these dont actually do anything
         case 'i': /* Read an integer */
           sscanf(*++argv,"%d",&ival);
           argc--;
@@ -62,6 +84,7 @@ void getoptions(int argc,char *argv[])
           sscanf(*++argv,"%s",str);
           argc--;
           break;
+#endif
         default:
           fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
           fprintf(stdout,"  Illegal switch option\n");
@@ -77,6 +100,7 @@ void getoptions(int argc,char *argv[])
     fprintf(stdout,"  vnmrj flag set\n");
   }
 #endif
+#if 0
   if (ival > 0) {
     fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
     fprintf(stdout,"  Example of command line integer input (= %d)\n",ival);
@@ -89,6 +113,10 @@ void getoptions(int argc,char *argv[])
     fprintf(stdout,"\n%s: %s()\n",SOURCEFILE,function);
     fprintf(stdout,"  Example of command line string input (= %s)\n",str);
   }
+#endif
+
+  /* print usage if no reconstductions requested */
+  if (0 == argc) usage();
 
   /* Allocate for input file name(s) in argument list */
   if ((f.fid = (char **)malloc(argc*sizeof(char *))) == NULL) nomem();

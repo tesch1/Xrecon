@@ -1,12 +1,35 @@
 "README"
 
 (I have no affiliation with Agilent, I've just put this repository up to have
-a place to collect/distribute improvements to the open-source *Xrecon* distributed
+a place to collect improvements to the open-source *Xrecon* that's distributed
 with VnmrJ.  I'm not actively working on this, but I'm happy to incorporate any
-improvements/ports/updates!!!  Just submit a pull request over github.)
+improvements/ports/updates!  Just submit a pull request over github.)
 
---- snip ---
+Requirements
+- GSL
+- FFTW3
+- libTIFF
+- (cmake)
 
+Build
+=====
+`
+cmake .
+make
+`
+
+or
+
+`
+make -f Makefile.orig
+`
+
+Usage
+=====
+- as a drop-in replacement for the existing
+- for stand-alone command-line image reconstruction
+
+--- snip: original README follows: ---
 Xrecon - External Reconstruction
 ================================
 

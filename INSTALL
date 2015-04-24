@@ -29,19 +29,19 @@ Xrecon
 ------
 Xrecon can be built by typing,
 
-  make
+  make -f Makefile.orig
 
 or, for debug mode,
 
-  make debug
+  make -f Makefile.orig debug
 
 Xrecon can be installed using the command,
 
-  make install
+  make -f Makefile.orig install
 
 or, for Windoze,
 
-  make winstall
+  make -f Makefile.orig winstall
 
 The default installation directory is ~/bin which is created if it does not
 exist.
