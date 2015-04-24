@@ -2,8 +2,8 @@
 
 (I have no affiliation with Agilent, I've just put this repository up to have
 a place to collect improvements to the open-source *Xrecon* that's distributed
-with VnmrJ.  I'm not actively working on this, but I'm happy to incorporate any
-improvements/ports/updates!  Just submit a pull request over github.)
+with VnmrJ.  I'm happy to incorporate any improvements/ports/updates!  Just
+submit a pull request over github.)
 
 Requirements
 - GSL
