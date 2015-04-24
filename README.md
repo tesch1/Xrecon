@@ -29,7 +29,7 @@ Usage
 - as a drop-in replacement for the existing
 - for stand-alone command-line image reconstruction
 
-`
+```
 Usage:
     Xrecon -h <...>
         print this help message
@@ -41,7 +41,7 @@ Usage:
     Xrecon <paths to saved data>...
         command line invocation on saved acquisition data, outputs
         reconstruction to (.../data.img?)
-`
+```
 
 --- snip: original README follows: ---
 Xrecon - External Reconstruction
