@@ -13,16 +13,16 @@ Requirements
 
 Build
 =====
-`
+```
 cmake .
 make
-`
+```
 
 or
 
-`
+```
 make -f Makefile.orig
-`
+```
 
 Usage
 =====
