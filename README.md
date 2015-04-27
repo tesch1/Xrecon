@@ -13,7 +13,7 @@ Requirements
 
 Build
 =====
-```
+```sh
 cmake .
 make
 ```
